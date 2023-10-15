@@ -32,6 +32,13 @@ async function run() {
     //data sent from express js to mongodb
 
     const coffeeCollection = client.db("coffeeDB").collection("coffee");
+    //CRUD Read operation
+    app.get("/coffee", async (req, res) => {
+      const cursor = coffeeCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
     //data from AddCoffee.jsx to express js
     app.post("/coffee", async (req, res) => {
       const newCoffee = req.body;

@@ -32,7 +32,6 @@ const AddCoffee = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId > 0) {
-          const Swal = require("sweetalert2");
           Swal.fire({
             title: "Success",
             text: "user added successfully",
