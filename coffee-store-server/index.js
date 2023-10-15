@@ -38,7 +38,14 @@ async function run() {
       const result = await cursor.toArray();
       res.send(result);
     });
+    //CRUD update operations
 
+    app.get("/coffee/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await coffeeCollection.findOne(query);
+      res.send(result);
+    });
     //data from AddCoffee.jsx to express js
     app.post("/coffee", async (req, res) => {
       const newCoffee = req.body;
