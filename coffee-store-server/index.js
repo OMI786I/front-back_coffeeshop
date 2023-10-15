@@ -28,10 +28,19 @@ async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
+
+    //data sent from express js to mongodb
+
+    const coffeeCollection = client.db("coffeeDB").collection("coffee");
     //data from AddCoffee.jsx to express js
     app.post("/coffee", async (req, res) => {
       const newCoffee = req.body;
       console.log(newCoffee);
+
+      //data sent from express js to mongodb
+
+      const result = await coffeeCollection.insertOne(newCoffee);
+      res.send(result);
     });
 
     // Send a ping to confirm a successful connection
