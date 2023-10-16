@@ -32,6 +32,9 @@ async function run() {
     //data sent from express js to mongodb
 
     const coffeeCollection = client.db("coffeeDB").collection("coffee");
+    //user data from signup
+    const userCollection = client.db("coffeeDB").collection("user");
+
     //CRUD Read operation
     app.get("/coffee", async (req, res) => {
       const cursor = coffeeCollection.find();
@@ -83,6 +86,14 @@ async function run() {
       //data sent from express js to mongodb
 
       const result = await coffeeCollection.insertOne(newCoffee);
+      res.send(result);
+    });
+
+    //user related apis
+    app.post("/user", async (req, res) => {
+      const user = req.body;
+      console.log(user);
+      const result = await userCollection.insertOne(user);
       res.send(result);
     });
 

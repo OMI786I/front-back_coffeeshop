@@ -13,6 +13,21 @@ const Signup = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
+        const createdAt = result?.user?.metadata?.creationTime;
+        const user = { email, createdAt: createdAt };
+        fetch("http://localhost:3000/user", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedID) {
+              console.log("user added to data base");
+            }
+          });
       })
       .catch((error) => {
         console.log(error);
