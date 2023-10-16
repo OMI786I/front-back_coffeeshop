@@ -4,8 +4,8 @@ import CoffeeCard from "./components/CoffeeCard";
 import { useState } from "react";
 
 function App() {
-  const loadedcoffees = useLoaderData();
-  const [coffees, setCoffees] = useState(loadedcoffees);
+  const loadedCoffees = useLoaderData();
+  const [coffees, setCoffees] = useState(loadedCoffees);
 
   return (
     <div>
