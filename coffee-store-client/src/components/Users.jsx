@@ -30,6 +30,7 @@ const Users = () => {
             <tr>
               <th>Email</th>
               <th>Created At</th>
+              <th>Last Login</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -39,6 +40,8 @@ const Users = () => {
               <tr key={user._id}>
                 <td>{user.email}</td>
                 <td>{user.createdAt}</td>
+                <td>{user.lastLoggedAt}</td>
+
                 <td>
                   <button
                     onClick={() => handleDelete(user._id)}
